@@ -111,6 +111,20 @@ void end_of_file(char *buffer);
 unsigned int sig_flag;
 char *_strtok(char *str, const char *delim);
 unsigned int check_if_match(char c, const char *str);
+void new_help_else(vars_t *vars);
+void new_help_history(vars_t *vars);
+void new_help_env(vars_t *vars);
+void new_help_cd(vars_t *vars);
+void new_help_exit(vars_t *vars);
+void new_help_setenv(vars_t *vars);
+void new_help_unsetenv(vars_t *vars);
+void new_help_unalias(vars_t *vars);
+void new_help_help(vars_t *vars);
+void new_help_unset(vars_t *vars);
+void new_help_alias(vars_t *vars);
+int factorial(int n);
+
+
 
 
 #endif

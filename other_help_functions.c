@@ -1,4 +1,4 @@
-#include "shel.h"
+#include "shell.h"
 /**
  * new_help_history - help builtin command history
  * @vars: if command matches a builtin name, text file is sent to stdout
