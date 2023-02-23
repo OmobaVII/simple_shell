@@ -30,7 +30,7 @@ typedef struct history
  * @array_tokens: an array of arguments
  * @buffer: buffer of the command
  * @status: to handle exit status
- * @argv: takes in arguments at opening of shell
+ * @argv: Accepts arguments at opening of shell
  * @counter: counts commands entered
  * @env: has environment
  * @commands: have commands
