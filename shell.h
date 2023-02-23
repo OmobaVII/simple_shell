@@ -57,7 +57,7 @@ typedef struct variables
 typedef struct builtins
 {
 	char *name;
-	int (*f)(vars_t *);
+	void (*f)(vars_t *);
 } builtins_t;
 
 int _strcmp(char *str1, char *str2);
@@ -89,14 +89,14 @@ char **_realloc(char **ptr, size_t *size);
 char *add_value(char *key, char *value);
 char **find_key(char **env, char *key);
 void add_new(vars_t *vars);
-int (*builtin_check(vars_t *vars))(vars_t *vars);
-int new_exit(vars_t *vars);
-int _env(vars_t *vars);
-int set_env(vars_t *vars);
-int unset_env(vars_t *vars);
+void (*builtin_check(vars_t *vars))(vars_t *vars);
+void new_exit(vars_t *vars);
+void _env(vars_t *vars);
+void set_env(vars_t *vars);
+void unset_env(vars_t *vars);
 void print_cd_2(vars_t *vars);
 void print_cd(vars_t *vars);
-int new_cd(vars_t *vars);
+void new_cd(vars_t *vars);
 char *search_directories(char **path_tokens, char *command);
 char **tokenize_path(vars_t vars, int idx, char *str);
 char *path_finder(vars_t vars, char *command);
@@ -122,7 +122,7 @@ void new_help_unalias(vars_t *vars);
 void new_help_help(vars_t *vars);
 void new_help_unset(vars_t *vars);
 void new_help_alias(vars_t *vars);
-int new_help(vars_t *vars);
+void new_help(vars_t *vars);
 int factorial(int n);
 
 
