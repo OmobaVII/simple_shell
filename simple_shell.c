@@ -81,7 +81,7 @@ unsigned int check_if_match(char c, const char *str)
 	return (0);
 }
 /**
- * _strtok - custome strtok function
+ * _strtok - custom strtok function
  * @str: string to tokenize
  * @delim: delimter to tokenize with
  * Return: a pointer to the next token

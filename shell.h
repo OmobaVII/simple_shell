@@ -122,6 +122,7 @@ void new_help_unalias(vars_t *vars);
 void new_help_help(vars_t *vars);
 void new_help_unset(vars_t *vars);
 void new_help_alias(vars_t *vars);
+void new_help(vars_t *vars);
 int factorial(int n);
 
 

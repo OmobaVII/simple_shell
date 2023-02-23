@@ -103,7 +103,7 @@ void _env(vars_t *vars)
  */
 void new_exit(vars_t *vars)
 {
-	int a;
+	int a = 0;
 
 	if (_strcmprev(vars->array_tokens[0], "exit")
 			== 0 && vars->array_tokens[1] != NULL)
@@ -115,7 +115,7 @@ void new_exit(vars_t *vars)
 			error_message(vars, ": Illegal number: ");
 			print_message(vars->array_tokens[1]);
 			print_message("\n");
-			return;
+			exit(2);
 		}
 		vars->status = a;
 	}
@@ -140,6 +140,7 @@ void (*builtin_check(vars_t *vars))(vars_t *vars)
 		{"setenv", set_env},
 		{"unsetenv", unset_env},
 		{"cd", new_cd},
+		{"help", new_help},
 
 
 		{NULL, NULL}};
