@@ -12,7 +12,7 @@ void new_cd(vars_t *vars)
 	if (vars->array_tokens[1] == NULL)
 	{
 		index = find_environ_index(*vars, "HOME");
-		chdir((vars->env[idx]) + 5);
+		chdir((vars->env[index]) + 5);
 	}
 	else if (_strcmprev(vars->array_tokens[1], "-") == 0)
 		print_str(vars->array_tokens[1], 0);
