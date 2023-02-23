@@ -4,7 +4,7 @@
  * @vars: a pointer to a struct of variables
  * Return: void
  */
-void unset_env(vars_t *vars)
+int unset_env(vars_t *vars)
 {
 	char **key, **newenv;
 	unsigned int a, b;
@@ -13,13 +13,13 @@ void unset_env(vars_t *vars)
 	{
 		error_message(vars, ": Incorrect number of arguments\n");
 		vars->status = 2;
-		return;
+		exit(vars->status);
 	}
 	key = find_key(vars->env, vars->array_tokens[1]);
 	if (key == NULL)
 	{
 		error_message(vars, ": No variable to unset");
-		return;
+		exit(2);
 	}
 	for (a = 0; vars->env[a] != NULL; a++)
 		;
@@ -41,13 +41,14 @@ void unset_env(vars_t *vars)
 	free(vars->env);
 	vars->env = newenv;
 	vars->status = 0;
+	exit(vars->status);
 }
 /**
  * set_env - a function that sets an environment variable
  * @vars: a pointer to an array of variables
  * Return: void
  */
-void set_env(vars_t *vars)
+int set_env(vars_t *vars)
 {
 	char **key;
 	char *var;
@@ -56,7 +57,7 @@ void set_env(vars_t *vars)
 	{
 		error_message(vars, ": Incorrect number of arguments\n");
 		vars->status = 2;
-		return;
+		exit(vars->status);
 	}
 	key = find_key(vars->env, vars->array_tokens[1]);
 	if (key == NULL)
@@ -79,13 +80,14 @@ void set_env(vars_t *vars)
 		*key = var;
 	}
 	vars->status = 0;
+	exit(vars->status);
 }
 /**
  * _env - a function that prints the current environment variable
  * @vars: an arrays of variables
  * Return: void
  */
-void _env(vars_t *vars)
+int _env(vars_t *vars)
 {
 	unsigned int a;
 
@@ -95,13 +97,14 @@ void _env(vars_t *vars)
 		_puts("\n");
 	}
 	vars->status = 0;
+	exit(vars->status);
 }
 /**
  * new_exit - a function that exits a program
  * @vars: an array of variables
  * Return: void
  */
-void new_exit(vars_t *vars)
+int new_exit(vars_t *vars)
 {
 	int a = 0;
 	int b = 2;
@@ -116,7 +119,7 @@ void new_exit(vars_t *vars)
 			error_message(vars, ": Illegal number: ");
 			print_message(vars->array_tokens[1]);
 			print_message("\n");
-			exit(b);
+			return (b);
 		}
 		vars->status = a;
 	}
@@ -132,7 +135,7 @@ void new_exit(vars_t *vars)
  * @vars: variables
  * Return: pointer to the function
  */
-void (*builtin_check(vars_t *vars))(vars_t *vars)
+int (*builtin_check(vars_t *vars))(vars_t *vars)
 {
 	unsigned int a;
 	builtins_t check[] = {

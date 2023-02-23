@@ -5,7 +5,7 @@
  * Return: 0 if sucess
  */
 
-void new_help(vars_t *vars)
+int new_help(vars_t *vars)
 {
 	char *file;
 	int fd, r;
@@ -20,7 +20,7 @@ void new_help(vars_t *vars)
 		if (s == NULL)
 		{
 			_puts_error("Fatal Error");
-			return;
+			return (vars->status);
 		}
 		while ((r = read(fd, s, 300)) > 0)
 		{
@@ -29,15 +29,16 @@ void new_help(vars_t *vars)
 			if (r == -1)
 			{
 				_puts_error("Fatal Error");
-				return;
+				return (vars->status);
 			}
 		}
 		free(s);
 		fd = close(fd);
-		return;
+		return (vars->status);
 	}
 	else
 		new_help_help(vars);
+	exit(vars->status);
 }
 
 /**

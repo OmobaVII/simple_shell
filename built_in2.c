@@ -5,7 +5,7 @@
  * @vars: the input parameter from the user
  * Return: void
  */
-void new_cd(vars_t *vars)
+int new_cd(vars_t *vars)
 {
 	int index;
 
@@ -18,6 +18,7 @@ void new_cd(vars_t *vars)
 		print_str(vars->array_tokens[1], 0);
 	else
 		chdir(vars->array_tokens[1]);
+	exit(vars->status);
 }
 /**
  * print_cd - a function that prints error when cd argument is invalid
