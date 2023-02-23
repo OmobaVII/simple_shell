@@ -104,6 +104,7 @@ void _env(vars_t *vars)
 void new_exit(vars_t *vars)
 {
 	int a = 0;
+	int b = 2;
 
 	if (_strcmprev(vars->array_tokens[0], "exit")
 			== 0 && vars->array_tokens[1] != NULL)
@@ -115,7 +116,7 @@ void new_exit(vars_t *vars)
 			error_message(vars, ": Illegal number: ");
 			print_message(vars->array_tokens[1]);
 			print_message("\n");
-			exit(2);
+			exit(b);
 		}
 		vars->status = a;
 	}
